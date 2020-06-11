@@ -3,50 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Shape Up Or Shape Out</title>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col">
-          Square - Side Length: <input type="text" id="squareLength" />
-          <button id="square-btn" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-           Rectangle - Width: <input type="text" id="rectWidth" />
-           Height: <input type="text" id="rectHeight" />
-          <button id="rectangle-btn" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-           Circle - Radius: <input type="text" id="circleRadius" />
-          <button id="circle-btn" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-            Isoceles Right Triangle - Sides: <input type="text" id="triangleSides" />
-          <button id="triangle-btn" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col-10 canvas"></div>
-          <div class="col-2 sidepanel">
-              <input type="text" class="" placeholder="Shape Name">
-              <input type="text" class="" placeholder="Width">
-              <input type="text" class="" placeholder="Height">
-              <input type="text" class="" placeholder="Radius">
-              <input type="text" class="" placeholder="Area">
-              <input type="text" class="" placeholder="Perimeter">
+    <div class="container">
+      <form action="">
+        <div class="form-row">
+          <div class="col-10 input-group">
+            <input
+              class="form-control"
+              type="text"
+              id="squareLength"
+              placeholder="Enter Square Side Length"
+            />
+           <div class="input-group-append"> <button id="square-btn" class="btn btn-primary">Submit</button></div>
+
           </div>
+          <div class="col-5">
+            <input
+              class="form-control"
+              type="text"
+              id="rectWidth"
+              placeholder="Enter Rectangle Width"
+            />
+          </div>
+          <div class="col-5 input-group">
+            <input
+              class="form-control"
+              type="text"
+              id="rectHeight"
+              placeholder="Enter Rectangle Height"
+            /> 
+            <div class="input-group-append">
+            <button id="rectangle-btn" class="btn btn-primary">Submit</button>
+          </div>
+          </div>
+         
+          <div class="col-10 input-group">
+            <input
+              class="form-control"
+              type="text"
+              id="circleRadius"
+              placeholder="Enter Circle Radius"
+            />
+            <div class="input-group-append">
+            <button id="circle-btn" class="btn btn-primary">Submit</button>
+          </div>
+          </div>
+          
+          <div class="col-10 input-group">
+            <input
+              class="form-control"
+              type="text"
+              id="triangleSides"
+              placeholder="Enter Triangle Sides"
+            />
+            <div class="input-group-append">
+            <button id="triangle-btn" class="btn btn-primary">Submit</button>
+          </div>
+          </div>
+          
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-10 canvas"></div>
+        <div class="col-2 sidepanel">
+          <form><input type="text" id="shapeName" class="form-control" placeholder="Shape Name" />
+          <input type="text" id="shapeWidth" class="form-control" placeholder="Width" />
+          <input type="text" id="shapeHeight" class="form-control" placeholder="Height" />
+          <input type="text" id="shapeRadius" class="form-control" placeholder="Radius" />
+          <input type="text" id="shapeArea" class="form-control" placeholder="Area" />
+          <input type="text" id="shapePerimeter" class="form-control" placeholder="Perimeter" /></form>
+        </div>
       </div>
     </div>
-
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
     <script src="./script.js"></script>
   </body>
 </html>

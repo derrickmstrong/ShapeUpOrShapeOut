@@ -1,6 +1,26 @@
 const max = 600;
 const min = 0;
 const canvas = document.querySelector('.canvas');
+const circleBtn = document.querySelector('#circle-btn');
+circleBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  return new Circle();
+});
+const rectangleBtn = document.querySelector('#rectangle-btn');
+rectangleBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  return new Rectangle();
+});
+const squareBtn = document.querySelector('#square-btn');
+squareBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  return new Square();
+});
+
+const rectWidth = document.querySelector('#rectWidth');
+const rectHeight = document.querySelector('#rectHeight');
+console.log(rectWidth.value);
+console.log(rectHeight.value);
 
 function randomVal(max, min) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -14,10 +34,11 @@ class Shape {
     this.div.style.top = `${randomVal(max, min)}px`;
     this.div.style.left = `${randomVal(max, min)}px`;
   }
-  
+
   get describe() {
     return this.describe();
   }
+
   get remove() {
     return this.remove();
   }
@@ -28,8 +49,8 @@ class Circle extends Shape {
     super(2 * radius, 2 * radius);
 
     this.div.className = 'circle';
-    this.div.width = `${2 * radius}px`;
-    this.div.height = `${2 * radius}px`;
+    // this.div.width = `${2 * radius}px`;
+    // this.div.height = `${2 * radius}px`;
     canvas.appendChild(this.div);
   }
 
@@ -75,8 +96,8 @@ class Rectangle extends Shape {
     super(width, height);
 
     this.div.className = 'rectangle';
-    this.div.width = `${width}px`;
-    this.div.height = `${height}px`;
+    this.div.style.width = `${rectWidth.value}px`;
+    this.div.style.height = `${rectHeight.value}px`;
     canvas.appendChild(this.div);
   }
 
@@ -95,12 +116,12 @@ class Rectangle extends Shape {
 
 class Square extends Shape {
   constructor(sideLength) {
-    super(width);
-    this.width = sideLength;
+    super();
+    this.sideLength = sideLength;
 
     this.div.className = 'square';
-    this.div.width = `${width}px`;
-    this.div.height = `${width}px`;
+    // this.div.width = `${width}px`;
+    // this.div.height = `${width}px`;
     canvas.appendChild(this.div);
   }
 

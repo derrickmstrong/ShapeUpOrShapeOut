@@ -1,21 +1,29 @@
-.row {
+.form-row, .row {
      padding: 1rem;
+}
+.col-12, .col-10, .col-5 {
+    padding-bottom: .5rem;
 }
 .canvas {
     width: 600px;
     height: 600px;
     background-color: rgb(136, 241, 236);
     position: relative;
+    contain: paint;
 }
 .sidepanel {
 padding: .5rem;
 }
-.sidepanel>input {
+.sidepanel>form>input {
 margin-bottom: 1rem;
+padding: 1rem;
+
 }
 .square {
     position: absolute;
-    background-color: rgba(255, 0, 0, 0.479);
+    background-color: rgba(250, 0, 0, 0.678);
+    width: 100px;
+    height: 100px;
 }
 .rectangle {
     position: absolute;
@@ -25,6 +33,8 @@ margin-bottom: 1rem;
     position: absolute;
     background-color: rgba(255, 0, 234, 0.534);
     border-radius: 50px;
+    width: 100px;
+    height: 100px;
 }
 .triangle {
     position: absolute;
