@@ -1,10 +1,10 @@
+let counter = 1;
 const max = 600;
 const min = 0;
 const canvas = document.querySelector('.canvas');
 // Circle
 const circleRadius = document.querySelector('#circleRadius');
 const circleBtn = document.querySelector('#circle-btn');
-        console.log(circleBtn.innerHTML);
 circleBtn.addEventListener('click', (e) => {
   e.preventDefault();
   return new Circle();
@@ -17,9 +17,8 @@ rectangleBtn.addEventListener('click', (e) => {
   e.preventDefault();
   return new Rectangle();
 });
-// Square 
+// Square
 const squareLength = document.querySelector('#squareLength');
-console.log(squareLength.value);
 const squareBtn = document.querySelector('#square-btn');
 squareBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -28,16 +27,29 @@ squareBtn.addEventListener('click', (e) => {
 // Triangle
 
 // Side Panel
-const shapeName = document.querySelector('#shapeName')
+const shapeName = document.querySelector('#shapeName');
+const shapeWidth = document.querySelector('#shapeWidth');
+const shapeHeight = document.querySelector('#shapeHeight');
+const shapeRadius = document.querySelector('#shapeRadius');
+const shapeArea = document.querySelector('#shapeArea');
+const shapePerimeter = document.querySelector('#shapePerimeter');
+
 class Shape {
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.div = document.createElement('div');
+    this.div.id = 'shape' + counter;
+    counter++;
     this.div.style.top = `${randomVal(max, min)}px`;
     this.div.style.left = `${randomVal(max, min)}px`;
     this.shapeName = shapeName;
-    this.describe()
+    this.shapeWidth = shapeWidth;
+    this.shapeHeight = shapeHeight;
+    this.shapeRadius = shapeRadius;
+    this.shapeArea = shapeArea;
+    this.shapePerimeter = shapePerimeter;
+    this.describe();
   }
 
   get describe() {
@@ -62,7 +74,12 @@ class Circle extends Shape {
 
   describe() {
     this.div.addEventListener('click', () => {
-        this.shapeName.placeholder = this.circleBtn.innerHTML;
+      this.shapeName.placeholder = this.circleBtn.innerHTML;
+      this.shapeWidth.placeholder = 'n/a';
+      this.shapeHeight.placeholder = 'n/a';
+      this.shapeRadius.placeholder = this.radius.value;
+      this.shapeArea.placeholder = '~' + this.calculateArea().toFixed(2) + '';
+      this.shapePerimeter.placeholder = 'n/a';
     });
   }
 
@@ -71,7 +88,7 @@ class Circle extends Shape {
   }
 
   calculateArea() {
-    const radius = this.width / 2;
+    const radius = this.radius.value;
     return Math.PI * radius * radius;
   }
 }
