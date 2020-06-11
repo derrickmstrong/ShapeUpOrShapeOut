@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <title>Shape Up Or Shape Out</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          Square - Side Length: <input type="text" id="squareLength" />
+          <button id="square-btn" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+           Rectangle - Width: <input type="text" id="rectWidth" />
+           Height: <input type="text" id="rectHeight" />
+          <button id="rectangle-btn" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+           Circle - Radius: <input type="text" id="circleRadius" />
+          <button id="circle-btn" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            Isoceles Right Triangle - Sides: <input type="text" id="triangleSides" />
+          <button id="triangle-btn" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-10 canvas"></div>
+          <div class="col-2 sidepanel">
+              <input type="text" class="" placeholder="Shape Name">
+              <input type="text" class="" placeholder="Width">
+              <input type="text" class="" placeholder="Height">
+              <input type="text" class="" placeholder="Radius">
+              <input type="text" class="" placeholder="Area">
+              <input type="text" class="" placeholder="Perimeter">
+          </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

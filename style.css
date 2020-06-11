@@ -1,0 +1,32 @@
+.row {
+     padding: 1rem;
+}
+.canvas {
+    width: 600px;
+    height: 600px;
+    background-color: rgb(136, 241, 236);
+    position: relative;
+}
+.sidepanel {
+padding: .5rem;
+}
+.sidepanel>input {
+margin-bottom: 1rem;
+}
+.square {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.479);
+}
+.rectangle {
+    position: absolute;
+    background-color: rgba(21, 255, 0, 0.486);
+}
+.circle {
+    position: absolute;
+    background-color: rgba(255, 0, 234, 0.534);
+    border-radius: 50px;
+}
+.triangle {
+    position: absolute;
+    background-color: rgba(255, 238, 0, 0.932);
+}
