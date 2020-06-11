@@ -2,12 +2,13 @@ let counter = 1;
 const max = 600;
 const min = 0;
 const canvas = document.querySelector('.canvas');
+
 // Circle
 const circleRadius = document.querySelector('#circleRadius');
 const circleBtn = document.querySelector('#circle-btn');
 circleBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  return new Circle();
+  return new Circle(circleRadius);
 });
 // Rectangle
 const rectWidth = document.querySelector('#rectWidth');
@@ -15,16 +16,22 @@ const rectHeight = document.querySelector('#rectHeight');
 const rectangleBtn = document.querySelector('#rectangle-btn');
 rectangleBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  return new Rectangle();
+  return new Rectangle(rectWidth, rectHeight);
 });
 // Square
 const squareLength = document.querySelector('#squareLength');
 const squareBtn = document.querySelector('#square-btn');
 squareBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  return new Square();
+  return new Square(squareLength);
 });
 // Triangle
+const triangleSides = document.querySelector('#triangleSides');
+const triangleBtn = document.querySelector('#triangle-btn');
+triangleBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  return new Triangle(triangleSides);
+});
 
 // Side Panel
 const shapeName = document.querySelector('#shapeName');
@@ -34,6 +41,7 @@ const shapeRadius = document.querySelector('#shapeRadius');
 const shapeArea = document.querySelector('#shapeArea');
 const shapePerimeter = document.querySelector('#shapePerimeter');
 
+// Shape class
 class Shape {
   constructor(width, height) {
     this.width = width;
@@ -50,36 +58,49 @@ class Shape {
     this.shapeArea = shapeArea;
     this.shapePerimeter = shapePerimeter;
     this.describe();
+    this.div.addEventListener('dblclick', () => this.removeShape())
+    this.appendToDOM();
+  }
+
+  appendToDOM() {
+    canvas.appendChild(this.div);
+  }
+  
+  removeShape() {
+      
+        canvas.removeChild(this.div)
+    
   }
 
   get describe() {
     return this.describe();
   }
 
-  get remove() {
-    return this.remove();
-  }
 }
 
+// Circle class
 class Circle extends Shape {
   constructor(radius) {
-    super(2 * radius, 2 * radius);
-    this.radius = circleRadius;
+    super();
+    this.radius = radius;
     this.circleBtn = circleBtn;
     this.div.className = 'circle';
-    this.div.style.width = `${2 * this.radius.value}px`;
-    this.div.style.height = `${2 * this.radius.value}px`;
-    canvas.appendChild(this.div);
+    this.div.style.width = `${this.diameter()}px`;
+    this.div.style.height = `${this.diameter()}px`;
+  }
+
+  diameter() {
+    return 2 * this.radius.value;
   }
 
   describe() {
     this.div.addEventListener('click', () => {
-      this.shapeName.placeholder = this.circleBtn.innerHTML;
-      this.shapeWidth.placeholder = 'n/a';
-      this.shapeHeight.placeholder = 'n/a';
-      this.shapeRadius.placeholder = this.radius.value;
-      this.shapeArea.placeholder = '~' + this.calculateArea().toFixed(2) + '';
-      this.shapePerimeter.placeholder = 'n/a';
+      this.shapeName.value = this.circleBtn.name;
+      this.shapeWidth.value = 'n/a';
+      this.shapeHeight.value = 'n/a';
+      this.shapeRadius.value = this.radius.value;
+      this.shapeArea.value = '~' + this.calculateArea().toFixed(2) + '';
+      this.shapePerimeter.value = 'n/a';
     });
   }
 
@@ -93,18 +114,28 @@ class Circle extends Shape {
   }
 }
 
+// Triangle class
 class Triangle extends Shape {
   constructor(height) {
-    super(width, height);
-
+    super();
+    this.height = height;
+    this.triangleBtn = triangleBtn;
     this.div.className = 'triangle';
-    this.div.width = `${width}px`;
-    this.div.height = `${height}px`;
-    canvas.appendChild(this.div);
+    this.div.style.borderTopWidth = `${this.height.value}px`;
+    this.div.style.borderRightWidth = `${this.height.value}px`;
   }
 
   describe() {
-    this.div.addEventListener('click', () => {});
+    this.div.addEventListener('click', () => {
+        this.shapeName.value = this.triangleBtn.name;
+        this.shapeWidth.value = `${this.height.value}px`;
+        this.shapeHeight.value = `${this.height.value}px`;
+        this.shapeRadius.value = `n/a`;
+        this.shapeArea.value = '~' + this.calculateArea().toFixed(2) + '';
+        this.shapePerimeter.value = `${
+          2 * (this.height.value + this.height.value)
+        }`;
+    });
   }
 
   remove() {
@@ -112,23 +143,31 @@ class Triangle extends Shape {
   }
 
   calculateArea() {
-    return (this.width * this.height) / 2;
+    return (this.height.value * this.height.value) / 2;
   }
 }
 
+// Rectangle class
 class Rectangle extends Shape {
   constructor(width, height) {
-    super(width, height);
-    this.width = rectWidth;
-    this.height = rectHeight;
+    super();
+    this.width = width;
+    this.height = height;
+    this.rectangleBtn = rectangleBtn;
     this.div.className = 'rectangle';
     this.div.style.width = `${this.width.value}px`;
     this.div.style.height = `${this.height.value}px`;
-    canvas.appendChild(this.div);
   }
 
   describe() {
-    this.div.addEventListener('click', () => {});
+    this.div.addEventListener('click', () => {
+        this.shapeName.value = this.rectangleBtn.name;
+        this.shapeWidth.value = `${this.width.value}px`;
+        this.shapeHeight.value = `${this.height.value}px`;
+        this.shapeRadius.value = `n/a`;
+        this.shapeArea.value = '~' + this.calculateArea().toFixed(2) + '';
+        this.shapePerimeter.value = `${2 * (this.width.value + this.height.value)}`;
+    });
   }
 
   remove() {
@@ -136,22 +175,30 @@ class Rectangle extends Shape {
   }
 
   calculateArea() {
-    return this.width * this.height;
+    return this.width.value * this.height.value;
   }
 }
 
+// Square class
 class Square extends Shape {
   constructor(sideLength) {
-    super(sideLength, sideLength);
+    super();
+    this.squareBtn = squareBtn;
     this.sideLength = squareLength;
     this.div.className = 'square';
     this.div.style.width = `${this.sideLength.value}px`;
     this.div.style.height = `${this.sideLength.value}px`;
-    canvas.appendChild(this.div);
   }
 
   describe() {
-    this.div.addEventListener('click', () => {});
+    this.div.addEventListener('click', () => {
+        this.shapeName.value = this.squareBtn.name;
+        this.shapeWidth.value = `${this.sideLength.value}px`;
+        this.shapeHeight.value = `${this.sideLength.value}px`;
+        this.shapeRadius.value = `n/a`;
+        this.shapeArea.value = '~' + this.calculateArea().toFixed(2) + '';
+        this.shapePerimeter.value = 'n/a';
+    });
   }
 
   remove() {
@@ -159,7 +206,7 @@ class Square extends Shape {
   }
 
   calculateArea() {
-    return this.width * this.width;
+    return this.sideLength.value * this.sideLength.value;
   }
 }
 

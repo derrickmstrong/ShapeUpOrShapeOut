@@ -1,40 +1,44 @@
-.form-row, .row {
-     padding: 1rem;
+.form-row,
+.row {
+  padding: 1rem;
 }
-.col-12, .col-10, .col-5 {
-    padding-bottom: .5rem;
+.col-12,
+.col-10,
+.col-5 {
+  padding-bottom: 0.5rem;
 }
 .canvas {
-    width: 600px;
-    height: 600px;
-    background-color: rgb(136, 241, 236);
-    position: relative;
-    contain: paint;
+  width: 600px;
+  height: 600px;
+  background-color: rgb(136, 241, 236);
+  position: relative;
+  contain: paint;
 }
 .sidepanel {
-padding: .5rem;
+  padding: 0.5rem;
 }
-.sidepanel>form>input {
-margin-bottom: 1rem;
-padding: 1rem;
-
+.sidepanel > form > input {
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 .square {
-    position: absolute;
-    background-color: rgba(250, 0, 0, 0.678);
+  position: absolute;
+  background-color: rgba(250, 0, 0, 0.678);
 }
 .rectangle {
-    position: absolute;
-    background-color: rgba(21, 255, 0, 0.486);
+  position: absolute;
+  background-color: rgba(21, 255, 0, 0.486);
 }
 .circle {
-    position: absolute;
-    background-color: rgba(255, 0, 234, 0.534);
-    border-radius: 50%;
+  position: absolute;
+  background-color: rgba(255, 0, 234, 0.534);
+  border-radius: 50%;
 }
 .triangle {
-    position: absolute;
-    background-color: rgba(255, 238, 0, 0.932);
-    width: 100px; /* Remove once triangle is fixed */
-    height: 50px; /* Remove once triangle is fixed */
+  position: absolute;
+  /* background-color: rgba(255, 238, 0, 0.932); */
+  width: 0;
+  height: 0;
+  border-top: solid rgba(255, 238, 0, 0.932);
+  border-right: solid transparent;
 }
