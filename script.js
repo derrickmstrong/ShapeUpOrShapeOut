@@ -1,31 +1,34 @@
 const max = 600;
 const min = 0;
 const canvas = document.querySelector('.canvas');
+// Circle
+const circleRadius = document.querySelector('#circleRadius');
 const circleBtn = document.querySelector('#circle-btn');
+        console.log(circleBtn.innerHTML);
 circleBtn.addEventListener('click', (e) => {
   e.preventDefault();
   return new Circle();
 });
+// Rectangle
+const rectWidth = document.querySelector('#rectWidth');
+const rectHeight = document.querySelector('#rectHeight');
 const rectangleBtn = document.querySelector('#rectangle-btn');
 rectangleBtn.addEventListener('click', (e) => {
   e.preventDefault();
   return new Rectangle();
 });
+// Square 
+const squareLength = document.querySelector('#squareLength');
+console.log(squareLength.value);
 const squareBtn = document.querySelector('#square-btn');
 squareBtn.addEventListener('click', (e) => {
   e.preventDefault();
   return new Square();
 });
+// Triangle
 
-const rectWidth = document.querySelector('#rectWidth');
-const rectHeight = document.querySelector('#rectHeight');
-console.log(rectWidth.value);
-console.log(rectHeight.value);
-
-function randomVal(max, min) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
+// Side Panel
+const shapeName = document.querySelector('#shapeName')
 class Shape {
   constructor(width, height) {
     this.width = width;
@@ -33,6 +36,8 @@ class Shape {
     this.div = document.createElement('div');
     this.div.style.top = `${randomVal(max, min)}px`;
     this.div.style.left = `${randomVal(max, min)}px`;
+    this.shapeName = shapeName;
+    this.describe()
   }
 
   get describe() {
@@ -47,15 +52,18 @@ class Shape {
 class Circle extends Shape {
   constructor(radius) {
     super(2 * radius, 2 * radius);
-
+    this.radius = circleRadius;
+    this.circleBtn = circleBtn;
     this.div.className = 'circle';
-    // this.div.width = `${2 * radius}px`;
-    // this.div.height = `${2 * radius}px`;
+    this.div.style.width = `${2 * this.radius.value}px`;
+    this.div.style.height = `${2 * this.radius.value}px`;
     canvas.appendChild(this.div);
   }
 
   describe() {
-    this.div.addEventListener('click', () => {});
+    this.div.addEventListener('click', () => {
+        this.shapeName.placeholder = this.circleBtn.innerHTML;
+    });
   }
 
   remove() {
@@ -94,10 +102,11 @@ class Triangle extends Shape {
 class Rectangle extends Shape {
   constructor(width, height) {
     super(width, height);
-
+    this.width = rectWidth;
+    this.height = rectHeight;
     this.div.className = 'rectangle';
-    this.div.style.width = `${rectWidth.value}px`;
-    this.div.style.height = `${rectHeight.value}px`;
+    this.div.style.width = `${this.width.value}px`;
+    this.div.style.height = `${this.height.value}px`;
     canvas.appendChild(this.div);
   }
 
@@ -116,12 +125,11 @@ class Rectangle extends Shape {
 
 class Square extends Shape {
   constructor(sideLength) {
-    super();
-    this.sideLength = sideLength;
-
+    super(sideLength, sideLength);
+    this.sideLength = squareLength;
     this.div.className = 'square';
-    // this.div.width = `${width}px`;
-    // this.div.height = `${width}px`;
+    this.div.style.width = `${this.sideLength.value}px`;
+    this.div.style.height = `${this.sideLength.value}px`;
     canvas.appendChild(this.div);
   }
 
@@ -136,4 +144,9 @@ class Square extends Shape {
   calculateArea() {
     return this.width * this.width;
   }
+}
+
+//  Function Declarations
+function randomVal(max, min) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }

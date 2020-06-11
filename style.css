@@ -22,8 +22,6 @@ padding: 1rem;
 .square {
     position: absolute;
     background-color: rgba(250, 0, 0, 0.678);
-    width: 100px;
-    height: 100px;
 }
 .rectangle {
     position: absolute;
@@ -32,11 +30,11 @@ padding: 1rem;
 .circle {
     position: absolute;
     background-color: rgba(255, 0, 234, 0.534);
-    border-radius: 50px;
-    width: 100px;
-    height: 100px;
+    border-radius: 50%;
 }
 .triangle {
     position: absolute;
     background-color: rgba(255, 238, 0, 0.932);
+    width: 100px; /* Remove once triangle is fixed */
+    height: 50px; /* Remove once triangle is fixed */
 }
